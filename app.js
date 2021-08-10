@@ -6,6 +6,8 @@ const session = require('express-session');
 const nunjucks = require('nunjucks');
 const dotenv = require('dotenv');
 const passport = require('passport');
+const helmet = require('helmet');
+const hpp = require('hpp');
 
 dotenv.config();
 const pageRouter = require('./routes/page');
@@ -31,6 +33,8 @@ sequelize.sync({ force: false })
 passportConfig();
 
 app.use(morgan('dev'));
+app.use(helmet({ contentSecurityPolicy: false}));
+app.use(hpp());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/img', express.static(path.join(__dirname, 'uploads')));
 app.use(express.json());
