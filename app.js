@@ -24,7 +24,7 @@ const { sequelize } = require('./models');
 const passportConfig = require('./passport');
 
 const app = express();
-app.set('port', 8001 || 8001);
+app.set('port', process.env.PORT || 8001);
 app.set('view engine', 'html');
 nunjucks.configure('views', {
     express: app,
