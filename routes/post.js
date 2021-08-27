@@ -2,6 +2,8 @@ const express = require('express');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+const AWS = require('aws-sdk');
+const multerS3 = require('multer-s3');
 
 const { Post, Hashtag } = require('../models');
 const { isLoggedIn } = require('./middlewares');
@@ -22,7 +24,7 @@ AWS.config.update({
 });
 
 const upload = multer({
-    storage: multer.s3({
+    storage: multerS3({
         s3: new AWS.S3(),
         bucket: 'nodebird0909',
         key(req, file, cb) {
