@@ -11,6 +11,7 @@
   "author": "jinw0909",
   "license": "MIT",
   "devDependencies": {
+    "jest": "^27.0.6",
     "nodemon": "^2.0.12"
   },
   "dependencies": {
